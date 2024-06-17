@@ -75,3 +75,14 @@ const getUserInfo = function () {
 
 const userInfo = getUserInfo();
 console.log(userInfo);
+
+// IIFE - Immediately Invoked Function Expression
+(function (message) {
+  console.log(message);
+})("You are not logged in.");
+
+// IIFE - with 'return' keyword
+const result3 = (function (a, b) {
+  return a * b;
+})(3, 10);
+console.log(result3);
