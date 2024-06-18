@@ -32,6 +32,8 @@ console.log(occupations); // ["Software Developer", "Junior Product Owner"]
 // var occupations; // not needed because it's already initialized due to hoisting
 console.log(typeof occupations); // object
 
+updateUser();
+
 function updateUser() {
   var isLoading = true;
   console.log("updateUser", isLoading); // true
@@ -44,7 +46,6 @@ function updateUser() {
   }
   console.log("function scope", isLoading); //true
 }
-updateUser();
 
 // the variables created with "var" keyword  have only "function scope"
 // so the variable created below within the "block scope"
@@ -55,3 +56,40 @@ if (isLoading === false) {
 }
 
 console.log("global scope", isLoading);
+
+// initialized the 'products' variable using 'let' keyword
+let products;
+console.log(products); // undefined
+
+// assign a new array to the variable
+products = [
+  { name: "Tigara", quantity: 100 },
+  { name: "Paine", quantity: 50 },
+];
+console.log(products); // [{ name: "Tigara", quantity: 100 },{ name: "Paine", quantity: 50 }]
+
+if (products.length > 0) {
+  let products = [{ name: "Cirese", quantity: 30 }];
+  console.log("block scope", products); // [{ name: "Cirese", quantity: 30 }]
+}
+console.log("global scope", products); // [{ name: "Tigara", quantity: 100 },{ name: "Paine", quantity: 50 }]
+
+// initialized and assigned a value to the 'pretCirese' variable using 'const' keyword
+const pretCirese = 100.2394745; // 100
+console.log(pretCirese);
+
+const formatPrice = (price) => {
+  const pretCirese = 30;
+  console.log("block scope", pretCirese);
+
+  return price.toLocaleString("ro-RO", {
+    currency: "RON",
+    style: "currency",
+    minimumFractionDigits: 4,
+  });
+};
+
+console.log("global scope", pretCirese);
+
+const formatedPrice = formatPrice(pretCirese);
+console.log(formatedPrice);
