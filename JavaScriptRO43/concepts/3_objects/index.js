@@ -17,8 +17,9 @@ const user2 = new Object({
 
 // check if the user2 object contains the "email" property
 const hasEmail = user2.hasOwnProperty("email");
-console.log(hasEmail);
+console.log(hasEmail); // true
 
+// complex object using almost all the data types (including primitive and non-primitive)
 const car = {
   brand: "",
   model: "",
@@ -71,3 +72,39 @@ console.log(Object.values(car)); // ["","",2020,"","",140,187, false, 5...]
 
 // Convert car object to array and extract all the keys
 console.log(Object.keys(car)); // ["brand","model","year"]
+
+// access the "gears" property nested within car object
+console.log(car.transmission.gears); // 8
+
+// access the "gears" property nested within car object
+console.log(car["transmission"]["gears"]); // 8
+
+// access the latest item in the "infotainmentOptions" array.
+console.log(car.infotainmentOptions[car.infotainmentOptions.length - 1]); // "Navigation"
+
+car.start(); // "Engine started."
+
+console.log(car.start); // [Function: start]
+
+console.log(car.display()); // "Current Kw usage: 60 | Current Hp usage: 90"
+
+// closure - nested function that accesses the local variables of the parent function
+var count = (function () {
+  var counter = 0; // private state
+
+  // ....
+
+  return {
+    increment: function () {
+      return (counter += 1);
+    },
+    decrement: function () {
+      return (counter -= 1);
+    },
+  };
+})();
+
+console.log(count.increment());
+console.log(count.increment());
+console.log(count.increment());
+console.log(count.decrement());
